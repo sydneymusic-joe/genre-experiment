@@ -45,6 +45,7 @@ function buttonClick(evt) {
 	}
 
 	evt.stopPropagation();
+	evt.preventDefault();
 	return false;
 }
 
