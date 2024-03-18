@@ -168,18 +168,18 @@
 
 body {
 	font-family : 'ITC Souvenir';
-	font-size : 100%;
+	font-size : 1vw;
 }
 
 @media screen and (max-width: 601px) {
 	body {
-		font-size : 70%;
+		font-size : 2.4vw;
 	}
 }
 
 @media screen and (max-height: 601px) {
 	body {
-		font-size : 70%;
+		font-size : 2vh;
 	}
 }
 
@@ -244,9 +244,9 @@ body {
 	background-position: 0 bottom;
 	background-size: auto 10px;
 	background-repeat: repeat-x;
-	padding : 50px 0;
+	padding : 4em 0;
 
-	flex : 0 1 100px;
+	flex : 0 1 0;
 }
 
 .slide.headermode p, .slide.headermode .intro, .slide.headermode .button {
@@ -270,7 +270,7 @@ body {
 
 .slide .title {
 	color : #FF0704;
-	font-size : 4em;
+	font-size : 3.5em;
 }
 
 .slide .subhead {
@@ -302,23 +302,25 @@ body {
 .slide-roulette .genrequote {
 	display : flex;
 	flex-direction: row;
-	max-width : 600px;
-	min-width : 300px;
-	height : 300px;
+	max-width : 40em;
+	min-width : 30em;
+	height : 18em;
 	justify-content: center;
+
+	margin-bottom : 15px;
 
 	border : solid 1px gray;
 	box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
 }
 
 .slide-roulette, .slide-result {
-	margin-top : 30px;
+	margin-top : 4em;
 }
 
 @media screen and (max-width: 601px) {
 	.slide-roulette .genrequote {
-		max-width : 350px;
-		height : 200px;
+		max-width : 80%;
+		height : 20em;
 	}
 }
 
@@ -345,12 +347,18 @@ body {
 }
 .button a {
 	text-decoration-style: wavy;
+	background-position: 0 bottom;
+	background-size: auto 3px;
+	background-repeat: repeat-x;
+	padding-bottom: 3px;
+	text-decoration: none;
+	background-image: url("data:image/svg+xml;charset=utf8,<svg id='Squiggle-svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'><path fill='none' stroke='%23f00' stroke-width='1' class='st0' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/></svg>");
 	color : #555;
-	text-underline-offset: 10px;
-	text-decoration-thickness: 3px;
+	text-underline-offset: 6px;
+	text-decoration-thickness: 1px;
 }
 .slide-roulette .button {
-	margin : 20px 0;
+	margin : 10px 0;
 }
 .slide-roulette .button {
 	font-size : 2em;
@@ -474,9 +482,9 @@ a:hover {
 .button:hover a {
 	background-image: url("data:image/svg+xml;charset=utf8,<svg id='Squiggle-svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'><style type='text/css'%3E.st0{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style><path fill='none' stroke='%23f00' stroke-width='1' class='st0' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/></svg>");
 	background-position: 0 bottom;
-	background-size: auto 8px;
+	background-size: auto 3px;
 	background-repeat: repeat-x;
-	padding-bottom: 8px;
+	padding-bottom: 3px;
 	text-decoration: none;
 }
 
@@ -486,7 +494,7 @@ a:hover {
 
 p {
 	font-family : 'IBM Plex Sans Condensed';
-	font-size : 13px;
+	font-size : 1em;
 	font-weight : 600;
 }
 
@@ -615,8 +623,14 @@ p.plug {
 	width : 50%;
 }
 
+@media screen and (max-width: 601px) {
+	.slide-host.about div {
+		width : 80%;
+	}
+}
+
 .slide-host.about p {
-	font-size : 1em;
+	font-size : 1.3em;
 	font-weight : normal;
 	line-height : 1.8em;
 }
