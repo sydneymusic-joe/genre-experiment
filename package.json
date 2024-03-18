@@ -1,0 +1,21 @@
+{
+  "name": "sydneymusic-flirt",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Blind Date With A Band",
+  "main": "index.js",
+  "scripts": {
+    "build": "node buildsops/buildscripts.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joe Hardy for SydneyMusic.net",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "contentful": "^10.8.1",
+    "dotenv": "^16.4.5",
+    "graphql-request": "^6.1.0",
+    "ical-generator": "^7.0.0",
+    "node-html-parser": "^6.1.12"
+  }
+}

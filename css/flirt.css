@@ -1,0 +1,642 @@
+/* reset */
+@layer reset {
+	*,
+	*::before,
+	*::after {
+	  box-sizing: border-box;
+	}
+  
+	body {
+	  margin: unset;
+	}
+  
+	button,
+	input,
+	textarea,
+	select {
+	  font: inherit;
+	}
+  
+	img,
+	picture,
+	svg,
+	canvas {
+	  display: block;
+	  max-inline-size: 100%;
+	  block-size: auto;
+	}
+  
+	@media (prefers-reduced-motion: reduce) {
+	  *,
+	  *::before,
+	  *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	  }
+	}
+  }
+
+  /* ok let's party */
+  /* latin-ext */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url(/fonts/Gg8nN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHYas-KLLgLsM.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113,
+		U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url(/fonts/Gg8nN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHYas-KzLgA.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+		U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(/fonts/Gg8lN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHYanyK7ThA.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113,
+		U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url(/fonts/Gg8lN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHYapyK4.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+		U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url(/fonts/Gg8gN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHY5a67vipYY1Fw.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113,
+		U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: normal;
+	font-weight: 500;
+	font-display: swap;
+	src: url(/fonts/Gg8gN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHY5a67vspYY.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+		U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url(/fonts/Gg8gN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHY527LvipYY1Fw.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113,
+		U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url(/fonts/Gg8gN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHY527LvspYY.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+		U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url(/fonts/Gg8gN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHY4S7bvipYY1Fw.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113,
+		U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url(/fonts/Gg8gN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHY4S7bvspYY.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+		U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: italic;
+	font-weight: 700;
+	font-display: swap;
+	src: url(/fonts/Gg8iN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHYas8BfulYotEyq5.woff2) format('woff2');
+	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113,
+		U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+	font-family: 'IBM Plex Sans Condensed';
+	font-style: italic;
+	font-weight: 700;
+	font-display: swap;
+	src: url(/fonts/Gg8iN4UfRSqiPg7Jn2ZI12V4DCEwkj1E4LVeHYas8BfulYQtEw.woff2) format('woff2');
+	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F,
+		U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+	font-family : 'ITC Souvenir';
+	font-display: block;
+	src : url(/fonts/itc-souvenir-std-medium.woff2) format('woff2');
+}
+
+body {
+	font-family : 'ITC Souvenir';
+	font-size : 100%;
+}
+
+@media screen and (max-width: 601px) {
+	body {
+		font-size : 70%;
+	}
+}
+
+@media screen and (max-height: 601px) {
+	body {
+		font-size : 70%;
+	}
+}
+
+@keyframes fadeInAnimation {
+	0% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
+.slide-host {
+	display : flex;
+	flex-direction: column;
+
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+
+	width : 100%;
+}
+
+.slide-welcome {
+	height : 100vh;
+}
+
+.slide-welcome p {
+	font-weight : 100;
+}
+
+.slide {
+	text-align: center;
+	width : 100%;
+	display : none;
+
+	justify-content: center;
+	align-items: center;
+
+	animation: fadeInAnimation ease 3s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards;
+}
+
+.slide.visible {
+	display: flex;
+	flex-direction: column;
+}
+
+.slide:not(.headermode) {
+	flex : 1 0 auto;
+}
+
+.slide.headermode {
+	/*position : absolute;
+	top : 20px;
+	height : 160px;*/
+	display : block;
+
+	background-image: url("data:image/svg+xml;charset=utf8,<svg id='Squiggle-svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'><style type='text/css'%3E.st0{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style><path fill='none' stroke='%23f00' stroke-width='1' class='st0' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/></svg>");
+	background-position: 0 bottom;
+	background-size: auto 10px;
+	background-repeat: repeat-x;
+	padding : 50px 0;
+
+	flex : 0 1 100px;
+}
+
+.slide.headermode p, .slide.headermode .intro, .slide.headermode .button {
+	display : none;
+}
+
+.slide:not(.visible).headermode .sticker, .slide:not(.visible).headermode .intro, .slide:not(.visible).headermode .button {
+	display : none;
+}
+
+.slide-welcome .sticker { text-align: center;}
+.slide-welcome .sticker img {
+	width : 200px;
+	filter: drop-shadow(6px 6px 0px #aaa);
+}
+
+.slide-welcome .intro {
+	font-size : 3em;
+	color : #484848;
+}
+
+.slide .title {
+	color : #FF0704;
+	font-size : 4em;
+}
+
+.slide .subhead {
+	font-family : 'IBM Plex Sans Condensed';
+	font-weight : 700;
+	text-transform: uppercase;
+	font-style : italic;
+	font-size : 1.5em;
+}
+
+.slide .subhead a {
+	color : black;
+}
+
+.slide-roulette .question {
+	margin-bottom : 20px;
+}
+
+.slide-roulette .question, h2 {
+	margin : 0;
+	margin-bottom : 20px;
+	color : #FF0704;
+	font-size : 1.8em;
+	text-transform: uppercase;
+	font-weight : 700;
+	font-family : 'IBM Plex Sans Condensed';
+}
+
+.slide-roulette .genrequote {
+	display : flex;
+	flex-direction: row;
+	max-width : 600px;
+	min-width : 300px;
+	height : 300px;
+	justify-content: center;
+
+	border : solid 1px gray;
+	box-shadow: 3px 3px 0px rgba(0,0,0,0.5);
+}
+
+.slide-roulette, .slide-result {
+	margin-top : 30px;
+}
+
+@media screen and (max-width: 601px) {
+	.slide-roulette .genrequote {
+		max-width : 350px;
+		height : 200px;
+	}
+}
+
+.slide-roulette .genrequote .opener, .slide-roulette .genrequote .closer {
+	font-size : 6em;
+	flex : 0 1 60px;
+}
+.slide-roulette .genrequote .opener {
+	align-self: flex-start;
+}
+.slide-roulette .genrequote .closer {
+	align-self:flex-end;
+	line-height: 10px;
+}
+.slide-roulette .genrequote .quote {
+	font-size : 50px;
+	align-content: center;
+	align-self : center;
+	text-transform: lowercase;
+}
+
+.button {
+	font-size : 3em;
+}
+.button a {
+	text-decoration-style: wavy;
+	color : #555;
+	text-underline-offset: 10px;
+	text-decoration-thickness: 3px;
+}
+.slide-roulette .button {
+	margin : 20px 0;
+}
+.slide-roulette .button {
+	font-size : 2em;
+}
+
+.button {
+	cursor:pointer;
+}
+
+.slide-welcome .button:hover:after {
+	animation: heartBeat; /* referring directly to the animation's @keyframe declaration */
+	animation-duration: 1s; /* don't forget to set a duration! */
+}
+
+.slide-welcome .button:after {
+	background-image:url('/images/can-hands/Finger-guns.png');
+}
+
+.slide .button:before, .slide .button:after {
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width : 1.5em;
+	height : 1.5em;
+	margin-left : 10px;
+	content : "";
+	position : relative;
+	top : .3em;
+	display : inline-block;
+}
+
+.slide-roulette .button:before {
+	background-image : url(/images/can-hands/Thumbs.png);
+}
+
+.slide-roulette .button:hover:before {
+	animation: heartBeat; /* referring directly to the animation's @keyframe declaration */
+	animation-duration: 1s; /* don't forget to set a duration! */
+}
+
+.slide-roulette .button:last-child:before {
+	background-image : url(/images/refresh.png);
+	background-position : center center;
+}
+
+.slide-roulette .button:last-child:hover:before {
+	animation: rotation 2s infinite linear reverse;
+}
+
+@keyframes rotation {
+	from {
+	  transform: rotate(0deg);
+	}
+	to {
+	  transform: rotate(359deg);
+	}
+  }
+  
+
+.result-host {
+	display : inline-grid;
+	grid-template-columns: auto;
+	text-align: center;
+	column-gap: 10px;
+	margin : 0;
+}
+
+.result-host img {
+	border-radius: 20px;
+	width : 150px;
+	height : 150px;
+	background : gray;
+}
+
+#bandName {
+	font-size : 50px;
+}
+
+.slide-result #gig {
+	display : flex;
+	justify-content: center;
+	flex-direction: column;
+	columns: 1;
+	padding : 0px 20px;
+	margin-top : 20px;
+}
+.slide-result #nogig {
+	display : none;
+}
+.slide-result.nogig #gig {
+	display : none
+}
+.slide-result.nogig #nogig {
+	display : block
+}
+
+.result-actions {
+	display : flex;
+	column-gap: 10px;
+	font-family : 'IBM Plex Sans Condensed';
+	text-transform : uppercase;
+	align-items: center;
+	justify-content: center;
+}
+
+.result-actions a {
+	text-underline-offset: 3px;
+	font-weight : 400;
+	color : black
+}
+
+a:hover {
+	background-image: url("data:image/svg+xml;charset=utf8,<svg id='Squiggle-svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'><style type='text/css'%3E.st0{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style><path fill='none' stroke='%23f00' stroke-width='1' class='st0' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/></svg>");
+	background-position: 0 bottom;
+	background-size: auto 3px;
+	background-repeat: repeat-x;
+	padding-bottom: 3px;
+	text-decoration: none;
+}
+
+.button:hover a {
+	background-image: url("data:image/svg+xml;charset=utf8,<svg id='Squiggle-svg' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:ev='http://www.w3.org/2001/xml-events' viewBox='0 0 20 4'><style type='text/css'%3E.st0{animation:shift .3s linear infinite;}@keyframes shift {from {transform:translateX(0);}to {transform:translateX(-20px);}}%3C/style><path fill='none' stroke='%23f00' stroke-width='1' class='st0' d='M0,3.5 c 5,0,5,-3,10,-3 s 5,3,10,3 c 5,0,5,-3,10,-3 s 5,3,10,3'/></svg>");
+	background-position: 0 bottom;
+	background-size: auto 8px;
+	background-repeat: repeat-x;
+	padding-bottom: 8px;
+	text-decoration: none;
+}
+
+#days {
+	color : black;
+}
+
+p {
+	font-family : 'IBM Plex Sans Condensed';
+	font-size : 13px;
+	font-weight : 600;
+}
+
+p.plug {
+	margin-top : 40px;
+	line-height : 210%;
+}
+
+.gig-card {
+	font-family : 'IBM Plex Sans Condensed';
+	font-size : 14px;
+	text-transform: uppercase;
+	font-weight : 500;
+
+	padding : 15px;
+	box-shadow : 1px 1px 5px rgba(0,0,0,0.5);
+	width : auto;
+	border-radius : 20px;
+	margin : 0 auto;
+	max-width : 440px;
+	margin-top : 10px;
+	text-align : left;
+
+	display : flex;
+	column-count:1;
+	flex-flow: column;	
+}
+
+.gig-card > * {
+	margin : 1px 0px;
+}
+
+.gig-card #headliner {
+	font-weight : 700;
+	font-style : italic;
+	font-size : 17px;	
+}
+
+.gig-card #supports:before {
+	content : 'W/ ';
+}
+
+.gig-card #supports:empty {
+	display : none;
+}
+
+.details {
+	font-weight : 100;
+	color : #888;
+}
+
+.details > :first-child {
+	padding-right : 10px;
+	border-right : solid 1px #aaa;
+}
+
+.details > :last-child {
+	margin-left : 10px;
+}
+
+.details a {
+	text-decoration : none;
+	color : #888
+}
+
+.links {
+	display : flex;
+	align-items: center;
+}
+
+.links a {
+	display : flex;
+	align-items: center;
+	margin-right : 20px;
+	text-transform: none;
+	color : black;
+	text-decoration : none;
+	margin-top : 8px;
+}
+
+.links .free-badge {
+	margin-top : 8px;
+}
+
+.links a:hover {
+	padding-bottom: 0;
+	background-image : none;
+	text-decoration : underline;
+}
+
+.links a:hover svg {
+	color : #FF0704;
+}
+
+.links a p {
+	font-weight : 100;
+	margin : 0;
+}
+
+.links a > svg {
+	margin-right : 4px;
+}
+
+.links svg {
+	width : 16px;
+	height : 16px;
+}
+
+.free-badge {
+	background:rgb(102,102,102);
+	color : white;
+	font-weight :600;
+	font-size : 10px;
+	padding : 0px 12px;
+	border-radius: 20px;;
+
+}
+
+.slide-host.about {
+	height : auto;
+	margin-top : 100px;
+	margin-bottom : 300px;
+}
+
+.slide-host.about div {
+	width : 50%;
+}
+
+.slide-host.about p {
+	font-size : 1em;
+	font-weight : normal;
+	line-height : 1.8em;
+}
+
+.slide-host.about p a {
+	color : black;
+}
+
+.slide-host.about .button a {
+	font-size : .5em;
+}
+
+#tease {
+	position : absolute;
+	top : 10px;
+	left : 10px;
+	font-family : 'IBM Plex Sans Condensed';
+	font-weight : 100;
+}
+
+#tease a {
+	color : black;
+}
