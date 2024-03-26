@@ -34,8 +34,8 @@ async function mungeData() {
 			limit : 1000,
 			where : {
 				AND : [
-					{ gigStartDate_gte : "2024-03-23" },
-					{ gigStartDate_lte : "2024-04-23"},
+					{ gigStartDate_gte : "2024-03-27" },
+					{ gigStartDate_lte : "2024-04-27"},
 					{
 					OR : [
 						{performersList_contains_some : ${JSON.stringify(bands)} },
