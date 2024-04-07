@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import { GraphQLClient, gql } from 'graphql-request';
-import genres from '../data/genres.json' assert { type : 'json' };
+import genres from './data/genres.json' assert { type : 'json' };
 import * as fs from 'fs/promises';
 import ical from 'ical-generator';
 
@@ -34,8 +34,8 @@ async function mungeData() {
 			limit : 1000,
 			where : {
 				AND : [
-					{ gigStartDate_gte : "2024-03-27" },
-					{ gigStartDate_lte : "2024-04-27"},
+					{ gigStartDate_gte : "2024-04-07" },
+					{ gigStartDate_lte : "2024-05-07"},
 					{
 					OR : [
 						{performersList_contains_some : ${JSON.stringify(bands)} },
@@ -98,7 +98,7 @@ async function mungeData() {
 		mungeNode.gigs = filtered;
 	});
 
-	fs.writeFile("../data/genres-munged.json", JSON.stringify(munge));
+	fs.writeFile("data/genres-munged.json", JSON.stringify(munge));
 }
 
 mungeData().catch(console.error);

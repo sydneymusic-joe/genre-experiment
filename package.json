@@ -5,7 +5,7 @@
   "description": "Blind Date With A Band",
   "main": "index.js",
   "scripts": {
-    "build": "node buildsops/buildscripts.js",
+    "build": "node buildscripts.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Joe Hardy for SydneyMusic.net",
