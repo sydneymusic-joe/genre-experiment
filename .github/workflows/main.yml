@@ -25,7 +25,7 @@ jobs:
         aws-region: ap-southeast-2
 
     - name: Deploy static site to S3 bucket
-      run: aws s3 sync ./ s3://genres.sydneymusic.net --delete --exclude ".git/*"
+      run: aws s3 sync ./ s3://genres.sydneymusic.net --delete --exclude ".git/*" --exclude "node_modules/*"
 
     - name: Invalidate Cloudfront Cache
       run: aws cloudfront create-invalidation --distribution-id EI0LHD238ZRJP --paths "/*"
