@@ -27,6 +27,10 @@ async function mungeData() {
 	let munge = genres;
 	const bands = genres.map((item) => { return item.artistname; })
 
+	let startDate = new Date();
+	let endDate = new Date();
+	endDate.setDate(endDate.getDate() + 30);
+
 	gigList = await doQuery(`query
 	{
 		eventsCollection(
@@ -34,8 +38,8 @@ async function mungeData() {
 			limit : 1000,
 			where : {
 				AND : [
-					{ gigStartDate_gte : "2024-04-07" },
-					{ gigStartDate_lte : "2024-05-07"},
+					{ gigStartDate_gte : "${startDate.toISOString()}" },
+					{ gigStartDate_lte : "${endDate.toISOString()}"},
 					{
 					OR : [
 						{performersList_contains_some : ${JSON.stringify(bands)} },
