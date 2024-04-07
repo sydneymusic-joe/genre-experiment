@@ -21,3 +21,6 @@ jobs:
 
     - name: Deploy static site to S3 bucket
       run: aws s3 sync ./ s3://genres.sydneymusic.net --delete --exclude ".git/*"
+
+    - name: Invalidate Cloudfront Cache
+      run: aws cloudfront create-invalidation --distribution-id EI0LHD238ZRJP --paths "/*"
