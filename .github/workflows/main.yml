@@ -14,11 +14,11 @@ jobs:
 
     - name: Use Node.js
       uses: actions/setup-node@v4
+    - run: npm install
+    - run: npm run build
       env:
         CONTENTFUL_SPACE: ${{ secrets.CONTENTFUL_SPACE }}
         CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN }}
-    - run: npm install
-    - run: npm run build
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
