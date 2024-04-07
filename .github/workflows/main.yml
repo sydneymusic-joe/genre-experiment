@@ -12,9 +12,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v1
 
-    - name: Build
+    - name: Use Node.js
       uses: actions/setup-node@v4
-      run: npm run build
+    - run: npm run build
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
