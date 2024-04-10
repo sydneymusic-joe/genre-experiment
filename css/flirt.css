@@ -720,3 +720,56 @@ p.plug {
 .datefilter a:hover::after {
 	color : white;
 }
+
+#popover {
+	position : absolute;
+	top : 0;
+	left : 0;
+	width : 100vw;
+	height : 100vh;
+
+	background : rgba(0,0,0,0.5);
+
+	justify-content: center;
+	display : none;
+}
+
+#popover.show {
+	display : flex;
+}
+
+#popover > div {
+	align-self: center;
+	border-radius : 20px;
+	background : white url(https://sydneymusic.net/canman-gigs@1x.png) no-repeat;
+	background-size: contain;
+	box-shadow : 3px 3px 10px rgba(0,0,0,0.5);
+
+	padding : 20px;
+	padding-top : 80px;
+	max-width : 400px;
+
+	text-align: center;
+}
+
+#popover > div p {
+	font-weight : normal;
+	font-size : 1.4em;
+}
+
+#popover > div a.share {
+	color : black;
+	font-weight : bold;
+}
+#popover > div svg {
+	width : 1.4em;
+	height : 1.4em;
+	display : inline;
+	vertical-align: middle;
+	position:absolute;
+	margin-left : -1.7em;
+}
+
+#popover a.close {
+	font-size : 0.7em;
+}

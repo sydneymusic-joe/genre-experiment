@@ -82,6 +82,7 @@ function loadQuote(reset = false) {
 	let genre = null;
 	do {
 		if (doneGenres.length == genres.length) {
+			document.getElementById('popover').classList.add('show');
 			doneGenres = [];
 		}
 
@@ -150,6 +151,9 @@ function init() {
 	});
 
 	document.getElementById('resetdeck').addEventListener('click', (evt) => { loadQuote(true); evt.preventDefault(); });
+
+	document.getElementById('share').addEventListener('click', (evt) => { if (!navigator.share) { alert("Sorry, your browser doesn't support this feature!"); evt.preventDefault(); return false; } navigator.share({url : 'https://genres.sydneymusic.net/', title : 'Blind Date With A Band'}); evt.preventDefault(); })
+	document.getElementById('popover-close').addEventListener('click', (evt) => { document.getElementById('popover').classList.remove('show'); evt.preventDefault(); })
 
 	getJSON(
 		"/data/genres-munged.json",
