@@ -2,8 +2,9 @@
 // written in one weird evening on the 17th of March, 2024
 // by Joe Hardy joe.hardy.id.au for sydneymusic.net
 
-let genres = null;
+let sourceGenres = null;
 let doneGenres = [];
+let genres = []; // filtered
 
 document.querySelectorAll('.button a').forEach(button => button.addEventListener('click', buttonClick));
 
@@ -53,8 +54,30 @@ function randomIntFromInterval(min, max) { // min and max included
 	return Math.floor(Math.random() * (max - min + 1) + min)
   }  
 
-function loadQuote() {
+function loadQuote(reset = false) {
 	if (!genres) {return;}
+
+	if (reset || genres.length === 0) {
+		let el = document.getElementsByClassName('selected')[0];
+		switch (Array.prototype.indexOf.call(el.parentElement.children, el)) {
+			case 0:
+				genres = sourceGenres.filter(artist => artist.gigs.some(g => new Date(g.gigStartDate).getTime() < nextDay(1).getTime()));
+				break;
+			case 1:
+				genres = sourceGenres.filter(artist => artist.gigs.some(g => new Date(g.gigStartDate).getTime() > nextDay(1).getTime() && new Date(g.gigStartDate).getTime() < nextDay(1, 1).getTime()));
+				break;
+			case 2:
+				genres = sourceGenres.filter(
+					artist => artist.gigs.some((g) => { 
+						let now = new Date();
+						now.setDate(now.getDate()+28);
+						return new Date(g.gigStartDate).getTime() < now.getTime();
+					}))
+				break;
+		}
+
+		doneGenres = [];
+	}
 
 	let genre = null;
 	do {
@@ -69,6 +92,9 @@ function loadQuote() {
 		doneGenres[doneGenres.length] = genre.artistname;
 		break;
 	} while (true)
+
+	document.getElementById('gigstotal').innerText = genres.length;
+	document.getElementById('gigsleft').innerText = genres.length - doneGenres.length;
 
 	const q = document.querySelector('.genrequote .quote');
 	if (genre.genre.length > 30 && genre.genre.length < 60) {
@@ -113,15 +139,50 @@ function randomIntFromInterval(min, max) { // min and max included
 }  
 
 function init() {
+	Array.prototype.forEach.call(document.getElementsByClassName('filter-item'), (el) => {
+		el.addEventListener('click', (evt) => {
+			document.getElementsByClassName('selected')[0].classList.remove('selected');
+			evt.currentTarget.classList.add('selected');
+			evt.preventDefault();
+
+			loadQuote(true);
+		})
+	});
+
+	document.getElementById('resetdeck').addEventListener('click', (evt) => { loadQuote(true); evt.preventDefault(); });
+
 	getJSON(
 		"/data/genres-munged.json",
 		(response, data) => {
-			genres = data.filter((artist) => {
+			sourceGenres = data.filter((artist) => {
 				return artist.gigs != null;
 			});
+
+			document.getElementsByClassName('filter-item')[0].dataset.howmany = sourceGenres.filter(artist => artist.gigs.some(g => new Date(g.gigStartDate).getTime() < nextDay(1).getTime())).length;
+			document.getElementsByClassName('filter-item')[1].dataset.howmany = sourceGenres.filter(artist => artist.gigs.some(g => new Date(g.gigStartDate).getTime() > nextDay(1).getTime() && new Date(g.gigStartDate).getTime() < nextDay(1, 1).getTime())).length;
+			document.getElementsByClassName('filter-item')[2].dataset.howmany =
+				sourceGenres.filter(
+					artist => artist.gigs.some((g) => { 
+						let now = new Date();
+						now.setDate(now.getDate()+28);
+						return new Date(g.gigStartDate).getTime() < now.getTime();
+					})).length;
+			
 			loadQuote();
 		}
 	);
+}
+
+function nextDay(x, offset=0){
+    var now = new Date();
+	let idx = offset+1;
+	while (idx-- > 0) {
+		if (offset > 0 && idx > -1) {
+			now.setDate(now.getDate() + 1)
+		}
+		now.setDate(now.getDate() + (x+(7-now.getDay())) % 7);
+	}
+    return now;
 }
 
 document.addEventListener('DOMContentLoaded', init(), false);

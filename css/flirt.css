@@ -183,6 +183,12 @@ body {
 	}
 }
 
+@media screen and (max-width: 376px) {
+	body {
+		font-size : 2vw;
+	}
+}
+
 @keyframes fadeInAnimation {
 	0% {
 		opacity: 0;
@@ -314,7 +320,7 @@ body {
 }
 
 .slide-roulette, .slide-result {
-	margin-top : 4em;
+	margin-top : 3em;
 }
 
 @media screen and (max-width: 601px) {
@@ -653,4 +659,64 @@ p.plug {
 
 #tease a {
 	color : black;
+}
+
+.counter {
+	font-family : 'IBM Plex Sans Condensed';
+	font-weight : 600;
+	font-size : 1.25em;
+}
+
+.counter span {
+	color : #FF0704;
+}
+
+.counter a {
+	color : black;
+}
+
+.datefilter {
+	display : grid;
+	grid-template-columns: auto auto auto;
+	gap: 10px;
+	margin-bottom : 20px;
+}
+
+.datefilter a {
+	padding : 5px 15px 4px 15px;
+	border-radius: 10px;
+	background : #eee;
+	text-decoration: none;
+	color : #444;
+
+	font-family : 'IBM Plex Sans Condensed';
+	font-weight : 600;
+	font-size : 1.3em;
+	text-transform : uppercase;
+
+	border-bottom : solid 2px #ddd;
+
+	transition: background-color .2s ease-in, color .2s ease-in;
+}
+
+.datefilter a::after {
+	content : ' (' attr(data-howmany) ')';
+	font-weight : 100;
+	color : #aaa;
+	
+	transition: color .2s ease-in;
+}
+
+.datefilter a.selected {
+	border-bottom : solid 2px #FF0704;
+}
+
+.datefilter a:hover {
+	background : #FF0704;
+	color : white;
+	border-bottom-color: black;
+}
+
+.datefilter a:hover::after {
+	color : white;
 }
