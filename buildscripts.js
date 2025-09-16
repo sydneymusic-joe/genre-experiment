@@ -1,14 +1,14 @@
 import 'dotenv/config';
 import { GraphQLClient, gql } from 'graphql-request';
-import genres from './data/genres.json' assert { type : 'json' };
+import genres from './data/genres.json' with { type : 'json' };
 import * as fs from 'fs/promises';
 import ical from 'ical-generator';
 
 const client = new GraphQLClient(
-	`https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE}`,
+	`https://graphql.datocms.com/`,
 	{
 		headers: {
-			authorization: `Bearer ${process.env.CONTENTFUL_TOKEN}`
+			authorization: `Bearer ${process.env.DATOCMS_TOKEN}`
 		}
 	}
 );
@@ -30,40 +30,30 @@ async function mungeData() {
 	let startDate = new Date();
 	let endDate = new Date();
 	endDate.setDate(endDate.getDate() + 30);
-
-	gigList = await doQuery(`query
-	{
-		eventsCollection(
-			order: [gigStartDate_ASC sys_firstPublishedAt_ASC],
-			limit : 1000,
-			where : {
-				AND : [
-					{ gigStartDate_gte : "${startDate.toISOString()}" },
-					{ gigStartDate_lte : "${endDate.toISOString()}"},
-					{
-					OR : [
-						{performersList_contains_some : ${JSON.stringify(bands)} },
-						{promotedName_in : ${JSON.stringify(bands)} }
-					  ]
-					}
-				  ]
-				}
-			) {
-			items {
-				gigStartDate
-				promotedName
-				ticketUrl
-				performersList
-				furtherInfo
-				furtherInfoContributorInitials
-				isFree
-				venue {
-					venueName
-					address
-					suburb
-					url,
-					slug
-				}
+console.log(endDate.toISOString());
+	gigList = await doQuery(`
+	query {
+		allEvents(
+			orderBy: [gigStartDate_ASC _firstPublishedAt_ASC],
+			first : 500,
+			filter : {
+				gigStartDate : { gte : "${startDate.toISOString()}",lte : "${endDate.toISOString()}" }
+			}
+		)
+		{
+			gigStartDate
+			promotedName
+			ticketUrl
+			performersListJson
+			furtherInfo
+			furtherInfoContributorInitials
+			isFree
+			venue {
+				venueName
+				address
+				suburb
+				url,
+				slug
 			}
 		}
 	}`);
@@ -73,7 +63,7 @@ async function mungeData() {
 		return;
 	}
 
-	gigList.eventsCollection.items.forEach(event => {
+	gigList.allEvents.forEach(event => {
 		const v = event.venue;
 		const start = new Date(event.gigStartDate);
 		const end = new Date(start);
@@ -93,13 +83,26 @@ async function mungeData() {
 		});
 		event.calLink = `data:text/calendar;charset=utf8,${encodeURIComponent(cal.toString())}`;
 	});
-	
-	munge.forEach(mungeNode => {
-		let filtered = gigList.eventsCollection.items.filter((gigItem) => { return gigItem.promotedName.indexOf(mungeNode.artistname) > -1 || (gigItem.performersList != null && gigItem.performersList.includes(mungeNode.artistname)); });
-		if (filtered.length == 0) {
+
+	gigList.allEvents.filter(ev => {
+		let artist;
+		if (ev.performersListJson) {
+			for (const p in ev.performersListJson) {
+				artist = genres.find(g => g.artistname.toLowerCase().trim() == ev.performersListJson[p].toLowerCase().replace(/\[.*?\]/, "").trim());
+			}
+		}
+
+		if (!artist) {
+			artist = genres.find(g => g.artistname.toLowerCase().trim() == ev.promotedName.replace(/\[.*?\]/, "").toLowerCase().trim());
+		}
+
+		if (artist) {
+			if (!artist.gigs) {
+				artist.gigs = []
+			}
+			artist.gigs[artist.gigs.length] = ev;
 			return true;
 		}
-		mungeNode.gigs = filtered;
 	});
 
 	fs.writeFile("data/genres-munged.json", JSON.stringify(munge));

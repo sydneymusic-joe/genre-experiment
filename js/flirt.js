@@ -120,7 +120,8 @@ function loadQuote(reset = false) {
 		document.getElementById('time').innerText = gsd.toLocaleString('en-AU', { hour: 'numeric', hour12: true });
 		document.getElementById('days').innerText = Math.round((gsd - new Date()) / (1000 * 3600 * 24));
 		document.getElementById('headliner').innerText = gig.promotedName;
-		document.getElementById('supports').innerHTML = gig.performersList ? gig.performersList.join(", ") : null;
+		console.log(gig.performersListJson);
+		document.getElementById('supports').innerHTML = gig.performersListJson ? gig.performersListJson.join(", ") : null;
 		document.querySelector('.slide-result').classList.remove('nogig');
 		document.querySelector('.links a:first-child').href = gig.ticketUrl;
 		document.querySelector('.links a:nth-child(2)').href = gig.calLink;
