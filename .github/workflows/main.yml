@@ -20,8 +20,7 @@ jobs:
     - run: npm install
     - run: npm run build
       env:
-        CONTENTFUL_SPACE: ${{ secrets.CONTENTFUL_SPACE }}
-        CONTENTFUL_TOKEN: ${{ secrets.CONTENTFUL_TOKEN }}
+        DATOCMS_TOKEN: ${{ secrets.DATOCMS_TOKEN }}
 
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
